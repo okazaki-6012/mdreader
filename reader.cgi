@@ -3,7 +3,7 @@ use CGI::Carp 'fatalsToBrowser';
 $|=1;
 
 use lib '/home/okazaki_d/perl5/lib/perl5/';
-use Text::Markdown 'markdown';
+use Text::Markdown::Discount 'markdown';
 
 # getの取得
 my %get_data = split(/=/,$ENV{'QUERY_STRING'});
@@ -11,7 +11,7 @@ my %get_data = split(/=/,$ENV{'QUERY_STRING'});
 # mdファイルをhtmlに変換
 open($FILE, $get_data{path});
 my @file = <$FILE>;
-my $text = join("\n", @file);
+my $text = join("\r", @file);
 my $html = markdown($text);
 close ($FILE);
 
